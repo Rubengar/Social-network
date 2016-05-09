@@ -16,24 +16,38 @@ public class NewsFeed
      */
     public NewsFeed()
     {
-        
+        messages = new ArrayList<>();
+        photos = new ArrayList<>();
     }
 
     /**
-     * An example of a method - replace this comment with your
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Añade un objeto MessagePost  al ArrayList
      */
     public void addMessagePost(MessagePost message)
     {
-
+        messages.add(message);
     }
+    /**
+     * Añade un objeto PhotoPost al ArrayList
+     */
     public void addPhotoPost(PhotoPost photo)
     {
-        
+        photos.add(photo);
     }
+    /**
+     * Muestra la informacion de todos los post
+     */
     public void show()
     {
-    
+        for (MessagePost mensaje: messages)
+        {
+            mensaje.display();
+            System.out.println(mensaje.timeString(System.currentTimeMillis()));
+        }
+        for (PhotoPost mensaje: photos)
+        {
+            mensaje.display();
+            System.out.println(mensaje.timeString(System.currentTimeMillis()));
+        }
     }
 }

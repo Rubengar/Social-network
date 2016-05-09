@@ -29,16 +29,15 @@ public class PhotoPost
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Suma uno a likes
      */
     public void like()
     {
         likes++;
     }
-
+    /**
+     * Resta un like si no tiene cero
+     */
     public void unlike()
     {
          if (likes>0)
@@ -46,27 +45,37 @@ public class PhotoPost
             likes--;
         }
     }
-
+    /**
+     * Añade un comentario
+     */
     public void addComment(String text)
     {
          comments.add(text);
     }
-
+    /**
+     * Devuelve el nombre de la imagen
+     */
     public String getImageFile()
     {
         return filename;
     }
-
+    /**
+     * Devuelve la cabezera de la imagen
+     */
     public String getCaption()
     {
         return caption;
     }
-
+    /**
+     * Devuelve el tiempo en milisegundos
+     */
     public long getTimeStamp()
     {
         return timestamp;
     }
-
+    /**
+     * Muestra la informacion por pantalla
+     */
     public void display()
     {
         System.out.println(username+" a publicado:");
@@ -87,8 +96,10 @@ public class PhotoPost
             }
         }        
     }
-
-    private String timeString(long time)
+    /**
+     * Devuelve una cadena con el tiempo transcurrido
+     */
+    public String timeString(long time)
     {
         String cadena = null;
         if ((timestamp-time)/1000 > 60)
