@@ -19,8 +19,11 @@ public class MessagePost
      */
     public MessagePost(String autor,String text)
     {
-        // initialise instance variables
-        
+        username = autor;
+        message = text;
+        timestamp = System.currentTimeMillis();
+        likes = 0;
+        comments = new ArrayList<>();
     }
 
     /**
@@ -31,30 +34,58 @@ public class MessagePost
      */
     public void like()
     {
-
+        likes++;
     }
     public void unlike()
     {
-    
+        if (likes>0)
+        {
+            likes--;
+        }
     }
     public void addComment(String text)
     {
-    
+        comments.add(text);
     }
     public String getText()
     {
-    
+        return message;
     }
     public long getTimeStamp()
     {
-    
+        return timestamp;
     }
     public void display()
     {
-    
+        System.out.println(username+" a publicado:");
+        System.out.println(message);
+        if (comments.isEmpty())
+        {
+            System.out.println("No tiene nigun comentario");
+        }
+        else
+        {
+            System.out.println("=================");
+            System.out.println("Comentarios");
+            System.out.println("=================");
+            for (String text : comments)
+            {
+                System.out.println(text);
+            }
+        }        
     }
     private String timeString(long time)
     {
-    
+        String cadena = null;
+        if ((timestamp-time)/1000 > 60)
+        {
+            long total = (timestamp-time)/1000;
+            cadena = (total/60+ "m" +total % 60+" s");
+        }
+        else
+        {
+            cadena = ((timestamp-time)/1000 + "s");
+        }
+        return cadena;
     }
 }
